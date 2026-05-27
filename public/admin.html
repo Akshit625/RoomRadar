@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Panel | RoomRadar</title>
+    <link rel="stylesheet" href="/assets/css/styles.css" />
+  </head>
+  <body class="role-page" data-dashboard-role="admin">
+    <header class="site-header">
+      <div class="container nav-shell">
+        <a class="brand" href="/">
+          <span class="brand-mark">RR</span>
+          <span>
+            <strong>RoomRadar</strong>
+            <small>Admin panel</small>
+          </span>
+        </a>
+
+        <nav class="nav-actions">
+          <a class="button button-ghost" href="/about">About</a>
+          <a class="button button-ghost" href="/">Explore map</a>
+          <span id="userBadge" class="user-badge hidden"></span>
+          <button id="logoutButton" class="button button-primary" type="button">Log out</button>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="role-hero">
+        <div class="container role-hero-grid">
+          <div class="role-intro">
+            <p class="eyebrow">Admin panel</p>
+            <h1>Review listings, keep the marketplace clean, and monitor owner inbox activity.</h1>
+            <p class="hero-text">
+              Approve or reject submissions, audit the full property inventory, and check student-owner conversations from one admin workspace.
+            </p>
+            <div class="hero-actions">
+              <a class="button button-primary" href="#reviewBoard">Open review queue</a>
+              <a class="button button-ghost" href="/">Open public map</a>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-header">
+              <div>
+                <h2>Snapshot</h2>
+                <p>What needs attention right now.</p>
+              </div>
+            </div>
+
+            <div class="stat-grid">
+              <article class="stat-card">
+                <span>Total listings</span>
+                <strong id="statTotalListings">0</strong>
+                <small>Entire marketplace inventory</small>
+              </article>
+              <article class="stat-card">
+                <span>Verified</span>
+                <strong id="statVerifiedListings">0</strong>
+                <small>Currently visible to students</small>
+              </article>
+              <article class="stat-card">
+                <span>Pending review</span>
+                <strong id="statPendingListings">0</strong>
+                <small>Listings awaiting a decision</small>
+              </article>
+              <article class="stat-card">
+                <span>Unread inquiries</span>
+                <strong id="statUnreadMessages">0</strong>
+                <small>Inbox messages still marked new</small>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="dashboard-shell">
+        <div class="container dashboard-stack">
+          <div id="reviewBoard" class="panel">
+            <div class="panel-header">
+              <div>
+                <h2>Listing review queue</h2>
+                <p id="reviewMeta">Loading review queue...</p>
+              </div>
+            </div>
+
+            <div id="reviewFilters" class="review-filter-bar" aria-label="Listing review filters">
+              <button class="review-filter is-active" type="button" data-review-filter="pending">Pending</button>
+              <button class="review-filter" type="button" data-review-filter="all">All</button>
+              <button class="review-filter" type="button" data-review-filter="verified">Verified</button>
+              <button class="review-filter" type="button" data-review-filter="rejected">Rejected</button>
+            </div>
+
+            <div id="reviewQueue" class="owner-list"></div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-header">
+              <div>
+                <h2>All listings</h2>
+                <p id="dashboardListingsMeta">Loading marketplace inventory...</p>
+              </div>
+            </div>
+
+            <div id="dashboardListings" class="owner-list"></div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-header">
+              <div>
+                <h2>Inbox monitor</h2>
+                <p id="dashboardInboxMeta">Loading inquiries...</p>
+              </div>
+              <button id="refreshInboxButton" class="button button-secondary" type="button">Refresh inbox</button>
+            </div>
+
+            <div id="dashboardInbox" class="message-list"></div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div id="appToast" class="toast hidden"></div>
+
+    <script type="module" src="/assets/js/dashboard.js"></script>
+  </body>
+</html>
